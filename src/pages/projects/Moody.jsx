@@ -52,13 +52,16 @@ function FloatingRobot({ src, alt, variant, delay = 0 }) {
   return (
     <FloatDrag
       className={`moody-v4-robot moody-v4-robot-${variant}`}
-      maxX={82}
-      maxY={62}
-      hoverScale={1.09}
-      floatDuration={5.8}
+      maxX={28}
+      maxY={22}
+      hoverScale={1.07}
+      floatDuration={7.2}
       floatDelay={Number(delay) || 0}
+      hitInset={variant === 'maven' ? 9 : 0}
     >
-      <img src={src} alt={alt} draggable="false" />
+      <div className="moody-v20-robot-motion">
+        <img src={src} alt={alt} draggable="false" />
+      </div>
     </FloatDrag>
   )
 }

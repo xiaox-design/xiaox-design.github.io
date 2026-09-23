@@ -5557,3 +5557,296 @@ html.route-jump-lock,html.route-jump-lock body{scroll-behavior:auto!important}
   .wash-lower .wash-system-intro{margin-top:18px !important}
   .wash-lower .wash-lower-layout{margin-top:24px !important}
 }
+
+
+/* ===================== V20 — FINAL TWO CALIBRATIONS ===================== */
+/* Moody cover: establish the visible composition first, then let the existing
+   hover/drag interaction act only as a subtle layer above this fixed baseline. */
+@media (min-width:1181px){
+  .moody-v3-hero-visual{overflow:visible!important;}
+
+  .moody-v4-robot{
+    position:absolute!important;
+    animation:none!important;
+    transform:none!important;
+    transition:none!important;
+    z-index:4!important;
+  }
+  .moody-v4-robot .float-drag-inner{
+    width:100%!important;
+    height:100%!important;
+    transform:translate3d(0,0,0)!important;
+    transition:transform .9s cubic-bezier(.16,1,.3,1)!important;
+    will-change:transform;
+  }
+  .moody-v4-robot[data-dragging="true"] .float-drag-inner{transition:none!important}
+  .moody-v4-robot:hover .float-drag-inner{
+    transform:translate3d(var(--drag-x,0px),var(--drag-y,0px),0) scale(1.055)!important;
+  }
+  .moody-v4-robot img{
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    object-fit:contain!important;
+    display:block!important;
+  }
+  .moody-v20-robot-motion{
+    width:100%;
+    height:100%;
+    animation:moodyV20RobotFloat 7.2s ease-in-out infinite;
+    animation-delay:var(--float-delay,0s);
+    transform-origin:center center;
+    will-change:transform;
+  }
+  .moody-v4-robot:hover .moody-v20-robot-motion,
+  .moody-v4-robot[data-dragging="true"] .moody-v20-robot-motion{
+    animation-play-state:paused;
+  }
+
+  /* Baseline composition — match the requested triangular arrangement:
+     blue lower-left, pink upper-right, yellow lower-right. */
+  .moody-v4-robot-mellow{
+    width:32%!important;
+    aspect-ratio:1192 / 1106!important;
+    left:7%!important;
+    top:39%!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:4!important;
+  }
+  .moody-v4-robot-maven{
+    width:31%!important;
+    aspect-ratio:1414 / 1106!important;
+    left:51%!important;
+    top:5%!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:6!important;
+  }
+  .moody-v4-robot-mochi{
+    width:34%!important;
+    aspect-ratio:1272 / 734!important;
+    left:58%!important;
+    top:59%!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:5!important;
+  }
+}
+
+@keyframes moodyV20RobotFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  25%{transform:translate3d(0,-4px,0) rotate(.18deg)}
+  50%{transform:translate3d(0,-2px,0) rotate(-.14deg)}
+  75%{transform:translate3d(0,-5px,0) rotate(.12deg)}
+}
+
+@media(max-width:1180px){
+  .moody-v20-robot-motion{animation-duration:7.2s}
+}
+
+/* Wash Well lower-body: make this section content-led rather than leaving a
+   full-screen spacer between the marker and the actual title / cards. */
+.wash-lower{
+  min-height:0!important;
+  height:auto!important;
+  padding-top:52px!important;
+  padding-bottom:72px!important;
+}
+.wash-lower > .wash-container{
+  min-height:0!important;
+  height:auto!important;
+}
+.wash-lower .wash-system-intro{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.28fr) minmax(300px,.72fr)!important;
+  gap:5vw!important;
+  align-items:center!important;
+  margin-top:28px!important;
+  min-height:0!important;
+  height:auto!important;
+}
+.wash-lower .wash-system-intro > .wash-reveal{
+  min-height:0!important;
+  height:auto!important;
+}
+.wash-lower-title{
+  margin:0!important;
+  font-size:clamp(48px,5.45vw,84px)!important;
+  line-height:1.02!important;
+  letter-spacing:-.055em!important;
+}
+.wash-lower .wash-lower-layout{
+  margin-top:30px!important;
+}
+@media(max-width:1120px){
+  .wash-lower .wash-system-intro{grid-template-columns:1fr!important;gap:22px!important}
+}
+@media(max-width:680px){
+  .wash-lower{padding-top:40px!important;padding-bottom:60px!important}
+  .wash-lower .wash-system-intro{margin-top:20px!important}
+  .wash-lower-title{font-size:clamp(42px,11vw,68px)!important}
+  .wash-lower .wash-lower-layout{margin-top:24px!important}
+}
+
+
+/* ===================== MOODY V21 — REFERENCE-LOCKED HERO ===================== */
+/*
+  Desktop hero composition is locked first; interaction is layered afterward.
+  Resting state follows the supplied reference: pink upper-right, blue lower-left,
+  yellow lower-right. Hover/drag only adds a restrained scale/translation.
+*/
+@media (min-width:1181px){
+  .moody-v3-hero-inner{
+    width:calc(100vw - 120px)!important;
+    max-width:none!important;
+    grid-template-columns:42% 58%!important;
+  }
+
+  .moody-v3-hero-visual{
+    height:100%!important;
+    min-height:0!important;
+    overflow:visible!important;
+  }
+
+  /* Resting state: no transform/animation on the positioning wrapper itself. */
+  .moody-v4-robot{
+    position:absolute!important;
+    transform:none!important;
+    animation:none!important;
+    transition:none!important;
+    will-change:auto!important;
+  }
+
+  .moody-v4-robot .float-drag-inner{
+    width:100%!important;
+    height:100%!important;
+    transform:translate3d(0,0,0)!important;
+    transform-origin:center center!important;
+    transition:transform .95s cubic-bezier(.16,1,.3,1)!important;
+    will-change:transform!important;
+  }
+
+  .moody-v4-robot[data-dragging="true"] .float-drag-inner{transition:none!important}
+
+  /* Hover is deliberately subtle: preserve the fixed composition, only scale a little. */
+  .moody-v4-robot:hover .float-drag-inner{
+    transform:translate3d(var(--drag-x,0px),var(--drag-y,0px),0) scale(1.045)!important;
+  }
+
+  .moody-v20-robot-motion{
+    width:100%!important;
+    height:100%!important;
+    animation:moodyV21RobotFloat 8s ease-in-out infinite!important;
+    animation-delay:var(--float-delay,0s)!important;
+    transform-origin:center center!important;
+    will-change:transform!important;
+  }
+
+  .moody-v4-robot:hover .moody-v20-robot-motion,
+  .moody-v4-robot[data-dragging="true"] .moody-v20-robot-motion{
+    animation-play-state:paused!important;
+  }
+
+  .moody-v4-robot img{
+    width:100%!important;
+    height:100%!important;
+    margin:0!important;
+    object-fit:contain!important;
+    display:block!important;
+    transition:filter .95s cubic-bezier(.16,1,.3,1)!important;
+  }
+
+  /* ---- REFERENCE-LOCKED TRIANGLE ----
+     Each wrapper owns its exact resting position and size.
+     The motion layer above it is not allowed to redefine that geometry. */
+
+  /* Pink / Maven — upper-right */
+  .moody-v4-robot-maven{
+    width:40%!important;
+    aspect-ratio:1414 / 1106!important;
+    left:48%!important;
+    top:6%!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:7!important;
+  }
+
+  /* Blue / Mellow — lower-left */
+  .moody-v4-robot-mellow{
+    width:40%!important;
+    aspect-ratio:1192 / 1106!important;
+    left:17%!important;
+    top:33%!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:4!important;
+  }
+
+  /* Yellow / Mochi — lower-right */
+  .moody-v4-robot-mochi{
+    width:37%!important;
+    aspect-ratio:1272 / 734!important;
+    left:68%!important;
+    top:45%!important;
+    right:auto!important;
+    bottom:auto!important;
+    z-index:6!important;
+  }
+}
+
+@keyframes moodyV21RobotFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  25%{transform:translate3d(0,-3px,0) rotate(.08deg)}
+  50%{transform:translate3d(0,-1px,0) rotate(-.06deg)}
+  75%{transform:translate3d(0,-3px,0) rotate(.05deg)}
+}
+
+/* ===================== V22 — MOODY HERO MICRO CALIBRATION ===================== */
+/* Keep V21's reference-locked geometry. Only make the three robots sit a little
+   higher, move blue slightly left, enlarge the hover lift, and tighten Maven's
+   interactive hit area so it cannot steal the yellow robot's hover. */
+@media (min-width:1181px){
+  /* Static baseline: shift the whole triangle upward without changing its form. */
+  .moody-v4-robot-maven{
+    top:2%!important;
+  }
+  .moody-v4-robot-mellow{
+    left:14%!important;
+    top:28%!important;
+  }
+  .moody-v4-robot-mochi{
+    top:40%!important;
+  }
+
+  /* Hover: stronger but still soft. Static coordinates above remain untouched. */
+  .moody-v4-robot:hover .float-drag-inner{
+    transform:translate3d(var(--drag-x,0px),calc(var(--drag-y,0px) - 10px),0) scale(1.07)!important;
+  }
+
+  /* Increase the visible float amplitude only; no baseline repositioning. */
+  .moody-v20-robot-motion{
+    animation-name:moodyV22RobotFloat!important;
+    animation-duration:7.4s!important;
+  }
+
+  /* Maven's visible image stays the same size, but its pointer target is inset. */
+  .moody-v4-robot-maven .float-drag-hit{
+    position:absolute!important;
+    inset:9%!important;
+    pointer-events:auto!important;
+    cursor:grab;
+    touch-action:none;
+  }
+  .moody-v4-robot-maven[data-dragging="true"] .float-drag-hit{cursor:grabbing}
+}
+
+@keyframes moodyV22RobotFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  25%{transform:translate3d(0,-7px,0) rotate(.12deg)}
+  50%{transform:translate3d(0,-2px,0) rotate(-.08deg)}
+  75%{transform:translate3d(0,-6px,0) rotate(.08deg)}
+}
+
+/* Custom pointer target for the one overlapping hero object. */
+.float-drag-hit{position:absolute;inset:var(--hit-inset,0);z-index:20}
