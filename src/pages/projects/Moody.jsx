@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react'
 import ProjectFooter from '../../components/ProjectFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import FloatDrag from '../../components/FloatDrag'
+import ProjectVideo from '../../components/ProjectVideo'
 
 import mellowBlue from '../../assets/moody-case/mellow-blue.png'
 import mellowBlueHero from '../../assets/moody-case/moody-hero-blue.png'
@@ -22,6 +23,8 @@ import internalStructure from '../../assets/moody-case/internal-structure.png'
 import emotionScene from '../../assets/moody-case/emotion-scene-crop.png'
 import healthScene from '../../assets/moody-case/health-scene-crop.png'
 import scheduleScene from '../../assets/moody-case/schedule-scene.png'
+import moodyProductVideo from '../../assets/project-video/moody-product-film.mp4'
+import moodyProductPoster from '../../assets/project-video/moody-product-film-poster.jpg'
 
 const sections = [
   ['02', 'PROJECT BACKGROUND'],
@@ -97,6 +100,15 @@ export default function Moody() {
         </div>
         <div className="moody-v3-scroll-cue">SCROLL TO EXPLORE <ArrowRight size={14} /></div>
       </section>
+
+      <ProjectVideo
+        code="MOODY"
+        title="让陪伴在真实交互中被看见。"
+        description="在进入项目背景之前，先用一段完整影像直观看到 Moody 的产品形态、人格表达与真实交互状态。"
+        duration="01:24"
+        video={moodyProductVideo}
+        poster={moodyProductPoster}
+      />
 
       <section className="moody-v3-light moody-v3-bg">
         <div className="moody-v3-container">

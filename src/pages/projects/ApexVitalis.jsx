@@ -2,6 +2,8 @@ import { Shield, Wind, Activity, HeartPulse } from 'lucide-react'
 import ProjectFooter from '../../components/ProjectFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import FloatDrag from '../../components/FloatDrag'
+import apexProductVideo from '../../assets/apex-video/apex-vitalis-product-film.mp4'
+import apexProductPoster from '../../assets/apex-video/apex-vitalis-product-film-poster.jpg'
 
 import coverScene from '../../assets/apex-v10/cover-snow.png'
 import heroExpanded from '../../assets/apex-v10/hero-expanded.png'
@@ -99,6 +101,39 @@ export default function ApexVitalis() {
           </Reveal>
         </div>
         <div className="apex-v10-cover-note">ONE SYSTEM / TWO STATES <span>展开使用 · 折叠收纳</span></div>
+      </section>
+
+      <section id="video-apex" className="apex-v10-video-inline" aria-label="Apex Vitalis 产品视频">
+        <div className="apex-v10-container">
+          <Reveal><Rule no="FILM" label="PRODUCT FILM / REAL USE" dark /></Reveal>
+          <div className="apex-v10-video-inline-head">
+            <Reveal className="apex-v10-video-inline-title">
+              <span className="apex-v10-orange-tag">PRODUCT FILM</span>
+              <h2>让产品在真实环境中<br />被看见。</h2>
+            </Reveal>
+            <Reveal className="apex-v10-video-inline-note" delay={70}>
+              <p>在进入项目背景之前，先用一段完整影像直观看到 Apex Vitalis 的使用状态、产品形态与工作方式。</p>
+              <span>00:58 / 1920 × 1080</span>
+            </Reveal>
+          </div>
+
+          <Reveal className="apex-v10-video-inline-frame" delay={120}>
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster={apexProductPoster}
+              src={apexProductVideo}
+              onLoadedMetadata={(event) => { event.currentTarget.volume = 1 }}
+            />
+            <div className="apex-v10-video-inline-corner">APEX VITALIS / PRODUCT FILM</div>
+          </Reveal>
+
+          <Reveal className="apex-v10-video-inline-foot" delay={170}>
+            <span>VIEW THE PRODUCT IN CONTEXT</span>
+            <strong>真实使用 · 产品形态 · 工作方式</strong>
+          </Reveal>
+        </div>
       </section>
 
       <section className="apex-v10-section apex-v10-paper">

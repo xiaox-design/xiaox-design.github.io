@@ -9,7 +9,7 @@ import Moody from './pages/projects/Moody'
 import Gradient from './pages/projects/Gradient'
 import WashWell from './pages/projects/WashWell'
 
-function forceTopBeforePaint() {
+function forceTopBeforePaint(targetId = '') {
   const html = document.documentElement
   const body = document.body
   const scroller = document.scrollingElement || html
@@ -42,6 +42,15 @@ function forceTopBeforePaint() {
       html.style.scrollBehavior = previousHtml
       body.style.scrollBehavior = previousBody
       html.classList.remove('route-jump-lock')
+
+      if (targetId) {
+        const target = document.getElementById(targetId)
+        if (target) {
+          const navOffset = 76
+          const top = target.getBoundingClientRect().top + window.scrollY - navOffset
+          window.scrollTo({ top, left: 0, behavior: 'auto' })
+        }
+      }
     })
   })
 }
@@ -53,8 +62,9 @@ export default function App() {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
     }
-    forceTopBeforePaint()
-  }, [location.pathname])
+    const targetId = location.hash ? decodeURIComponent(location.hash.slice(1)) : ''
+    forceTopBeforePaint(targetId)
+  }, [location.pathname, location.hash])
 
   return (
     <>

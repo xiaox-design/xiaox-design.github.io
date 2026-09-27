@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react'
 import ProjectFooter from '../../components/ProjectFooter'
 import useScrollReveal from '../../hooks/useScrollReveal'
 import FloatDrag from '../../components/FloatDrag'
+import ProjectVideo from '../../components/ProjectVideo'
 
 import backgroundCollage from '../../assets/gradient-case/background-collage.png'
 import painInversion from '../../assets/gradient-case/pain-inversion.png'
@@ -25,6 +26,8 @@ import threeView from '../../assets/gradient-case/three-view.png'
 import indicator from '../../assets/gradient-case/indicator.png'
 import velcro from '../../assets/gradient-case/velcro.png'
 import soleDetail from '../../assets/gradient-case/sole-detail.png'
+import gradientProductVideo from '../../assets/project-video/gradient-product-film.mp4'
+import gradientProductPoster from '../../assets/project-video/gradient-product-film-poster.jpg'
 
 function Reveal({ children, className = '', delay = 0 }) {
   return (
@@ -142,6 +145,15 @@ export default function Gradient() {
         </div>
         <div className="gradient-scroll-cue">SCROLL TO EXPLORE <ArrowRight size={14} /></div>
       </section>
+
+      <ProjectVideo
+        code="GRADIENT"
+        title="让矫形从康复空间走进真实日常。"
+        description="在进入项目背景之前，先用一段完整影像直观看到 Gradient 的穿戴形态、连接方式与日常使用状态。"
+        duration="01:00"
+        video={gradientProductVideo}
+        poster={gradientProductPoster}
+      />
 
       <section className="gradient-section gradient-background">
         <div className="gradient-container">
